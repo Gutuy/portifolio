@@ -1,0 +1,117 @@
+<section id="hero" class="hero-section">
+  <div class="hero-container">
+    <!-- Top Status Badge -->
+    <div class="hero-badge">
+      <span class="status-dot"></span>
+      <span class="badge-text">Software Developer · Addis Ababa, Ethiopia</span>
+    </div>
+
+    <!-- Main Headline -->
+    <h1 class="hero-title">
+      Hi, I'm <span class="highlight-name">{{ profile.name }}</span>
+    </h1>
+
+    <!-- Subtitle with Typewriter -->
+    <div class="typewriter-container">
+      <span class="static-prefix">I am a </span>
+      <span class="dynamic-text">{{ currentTitle }}</span>
+      <span class="cursor">|</span>
+    </div>
+
+    <!-- Humanized Bio Description -->
+    <p class="hero-description">
+      I am a software developer based in Addis Ababa, Ethiopia. I enjoy building clean, reliable web applications and working with modern tools like Angular and .NET to deliver practical digital solutions.
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary" (click)="scrollTo('#projects', $event)">
+        <span>View Projects</span>
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+
+      <a [href]="profile.resumeUrl" class="btn btn-secondary" download="Gutu-Yaekob-CV.pdf" target="_blank">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>Download CV</span>
+      </a>
+
+      <a href="#contact" class="btn btn-outline" (click)="scrollTo('#contact', $event)">
+        <span>Contact</span>
+      </a>
+    </div>
+
+    <!-- Social Links Row -->
+    <div class="hero-socials">
+      <span class="social-label">Connect:</span>
+      <div class="social-icons">
+        <!-- GitHub -->
+        <a href="https://github.com/gutuy" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/gutu-yaekob-276b2b28a" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+
+        <!-- Email -->
+        <a [href]="'mailto:' + profile.email" class="social-btn" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </a>
+
+        <!-- Phone -->
+        <a [href]="'tel:' + profile.phone" class="social-btn" aria-label="Phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Professional Overview Cards (Clean, Photo-free, Grounded) -->
+    <div class="hero-overview-grid">
+      <div class="overview-card glass-card">
+        <div class="overview-header">
+          <span class="overview-label">Current Role</span>
+          <span class="overview-tag">Production</span>
+        </div>
+        <div class="overview-value">Software Developer</div>
+        <div class="overview-sub">Information Network Security Administration (INSA)</div>
+      </div>
+
+      <div class="overview-card glass-card">
+        <div class="overview-header">
+          <span class="overview-label">Core Stack</span>
+          <span class="overview-tag">Specialization</span>
+        </div>
+        <div class="overview-value">Angular &amp; .NET</div>
+        <div class="overview-sub">TypeScript, C#, REST APIs, SQL</div>
+      </div>
+
+      <div class="overview-card glass-card">
+        <div class="overview-header">
+          <span class="overview-label">Education</span>
+          <span class="overview-tag">Degree</span>
+        </div>
+        <div class="overview-value">B.Sc. in Computer Science</div>
+        <div class="overview-sub">Jimma University (Class of 2024)</div>
+      </div>
+    </div>
+  </div>
+</section>

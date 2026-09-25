@@ -1,0 +1,62 @@
+<header class="navbar" [class.scrolled]="isScrolled">
+  <div class="nav-container">
+    <!-- Brand Logo -->
+    <a href="#" class="nav-logo" (click)="scrollTo('#hero', $event)">
+      <span class="logo-box">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+      </span>
+      <span class="logo-text">Gutu<span class="highlight">.dev</span></span>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="nav-links">
+      @for (item of navItems; track item.label) {
+        <a [href]="item.href" class="nav-link" (click)="scrollTo(item.href, $event)">
+          {{ item.label }}
+          <span class="link-glow"></span>
+        </a>
+      }
+    </nav>
+
+    <!-- Right Side Action CTA -->
+    <div class="nav-actions">
+      <a href="#contact" class="btn-talk" (click)="scrollTo('#contact', $event)">
+        <span>Let's Talk</span>
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button 
+        class="mobile-toggle" 
+        [class.open]="isMobileMenuOpen" 
+        (click)="toggleMobileMenu()" 
+        aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  @if (isMobileMenuOpen) {
+    <div class="mobile-drawer">
+      <div class="mobile-nav-list">
+        @for (item of navItems; track item.label) {
+          <a [href]="item.href" class="mobile-nav-link" (click)="scrollTo(item.href, $event)">
+            {{ item.label }}
+          </a>
+        }
+        <a href="#contact" class="btn btn-primary mobile-cta" (click)="scrollTo('#contact', $event)">
+          Let's Talk
+        </a>
+      </div>
+    </div>
+  }
+</header>

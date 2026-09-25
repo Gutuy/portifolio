@@ -1,0 +1,285 @@
+/* ==========================================================================
+   PORTFOLIO GLOBAL DESIGN SYSTEM & ANIMATION ENGINE
+   ========================================================================== */
+
+/* 1. Design Tokens (CSS Variables) - Change these anytime to re-theme the portfolio */
+:root {
+  /* STRICTLY TWO BRAND COLORS */
+  --brand-primary: #2563eb;          /* Brand 1: Royal Engineering Blue */
+  --brand-primary-rgb: 37, 99, 235;
+  --brand-secondary: #0ea5e9;        /* Brand 2: Modern Sky Blue */
+  --brand-secondary-rgb: 14, 165, 233;
+
+  /* Color Aliases for 100% Backward & Component Consistency */
+  --accent-indigo: var(--brand-primary);
+  --accent-purple: var(--brand-primary);
+  --accent-cyan: var(--brand-secondary);
+  --accent-emerald: var(--brand-secondary);
+  --accent-pink: var(--brand-secondary);
+
+  /* Clean Neutrals */
+  --bg-dark: #0a0d14;
+  --bg-card: rgba(16, 22, 34, 0.75);
+  --bg-card-hover: rgba(24, 33, 50, 0.85);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-glass-hover: rgba(37, 99, 235, 0.35);
+
+  /* Text Colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  /* Subtle Glows matching the two brand colors */
+  --glow-primary: 0 0 24px rgba(37, 99, 235, 0.25);
+  --glow-secondary: 0 0 24px rgba(14, 165, 233, 0.25);
+  --glow-indigo: var(--glow-primary);
+  --glow-cyan: var(--glow-secondary);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  /* Font Families */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 2. Global Resets & HTML Setup */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Prevents sticky nav from obscuring section headings */
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle Background Ambient Lighting */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.12;
+}
+
+body::before {
+  top: -120px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.16), transparent);
+}
+
+body::after {
+  bottom: 0px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.12), transparent);
+}
+
+/* 3. Typography Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+/* 4. Utility Gradient & Glow Classes - Restricted strictly to 2 brand colors */
+.gradient-text {
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.gradient-text-alt {
+  background: linear-gradient(135deg, var(--brand-secondary) 0%, var(--brand-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Section Header Badge */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.28);
+  border-radius: 100px;
+  color: var(--brand-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+
+/* 5. Modern Glass Card */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition-smooth);
+
+  &:hover {
+    border-color: var(--border-glass-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45), var(--glow-indigo);
+  }
+}
+
+/* 6. Standard Action Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 28px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition-spring);
+  position: relative;
+  overflow: hidden;
+
+  &.btn-primary {
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    color: #ffffff;
+    box-shadow: 0 4px 18px rgba(37, 99, 235, 0.35);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 26px rgba(37, 99, 235, 0.5);
+      filter: brightness(1.08);
+    }
+  }
+
+  &.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border: 1px solid var(--border-glass);
+    backdrop-filter: blur(8px);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+  }
+
+  &.btn-outline {
+    background: transparent;
+    color: var(--brand-secondary);
+    border: 1px solid rgba(14, 165, 233, 0.35);
+
+    &:hover {
+      background: rgba(14, 165, 233, 0.08);
+      border-color: var(--brand-secondary);
+      box-shadow: var(--glow-secondary);
+    }
+  }
+}
+
+/* 7. Keyframe Animations */
+@keyframes floatAmbient {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(60px, 40px) scale(1.15);
+  }
+  100% {
+    transform: translate(-30px, 80px) scale(0.9);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes floatElement {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e2433;
+  border-radius: 5px;
+  border: 2px solid var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-primary);
+}

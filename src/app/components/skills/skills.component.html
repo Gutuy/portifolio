@@ -1,0 +1,80 @@
+<section id="skills" class="skills-section">
+  <div class="skills-container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <span class="section-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="badge-icon">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        Technical Skills
+      </span>
+      <h2 class="section-title">Skills &amp; <span class="gradient-text">Technologies</span></h2>
+      <p class="section-subtitle">
+        Languages, frameworks, databases, and tools I use to build reliable software.
+      </p>
+    </div>
+
+    <!-- Skills Category Cards Grid -->
+    <div class="skills-grid">
+      @for (category of skillCategories; track category.title; let catIndex = $index) {
+        <div class="skill-category-card glass-card">
+          <!-- Card Header -->
+          <div class="category-header">
+            <div class="category-icon-box">
+              @if (catIndex === 0) {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="cat-svg">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              } @else if (catIndex === 1) {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="cat-svg">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                  <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                  <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                </svg>
+              } @else {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="cat-svg">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+              }
+            </div>
+            <h3 class="category-title">{{ category.title }}</h3>
+          </div>
+
+          <!-- Skills Bars List -->
+          <div class="skills-list">
+            @for (skill of category.skills; track skill.name) {
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">{{ skill.name }}</span>
+                  <span class="skill-percentage">{{ skill.level }}%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-bar" [style.width.%]="skill.level">
+                    <span class="progress-glow"></span>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Tech Stack Pill Cloud -->
+    <div class="tech-marquee-wrapper">
+      <div class="tech-marquee-title">Additional Tools &amp; Technologies</div>
+      <div class="tech-pills-container">
+        @for (pill of techPills; track pill) {
+          <div class="tech-pill">
+            <span class="pill-dot"></span>
+            <span>{{ pill }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,106 @@
+<section id="projects" class="projects-section">
+  <div class="projects-container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <span class="section-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="badge-icon">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+        </svg>
+        Portfolio
+      </span>
+      <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+      <p class="section-subtitle">
+        Selected production platforms, web systems, and full-stack projects I have built or contributed to.
+      </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="filter-tabs">
+        @for (category of categories; track category) {
+          <button 
+            class="filter-btn" 
+            [class.active]="selectedCategory === category" 
+            (click)="setCategory(category)">
+            {{ category }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      @for (project of filteredProjects; track project.id) {
+        <div class="project-card glass-card">
+          <!-- Project Image Frame -->
+          <div class="project-img-wrapper">
+            <img [src]="project.image" [alt]="project.title" class="project-img" loading="lazy" />
+            
+            <div class="img-overlay">
+              <div class="overlay-actions">
+                @if (project.liveUrl) {
+                  <a [href]="project.liveUrl" target="_blank" rel="noopener noreferrer" class="overlay-btn" title="Open Live Website">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                }
+                @if (project.githubUrl && !project.liveUrl) {
+                  <a [href]="project.githubUrl" target="_blank" rel="noopener noreferrer" class="overlay-btn" title="View Source on GitHub">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                  </a>
+                }
+              </div>
+            </div>
+
+            <!-- Badges -->
+            <div class="card-badges">
+              <span class="category-badge">{{ project.category }}</span>
+              @if (project.liveUrl) {
+                <span class="live-badge">
+                  <span class="live-dot"></span> Live System
+                </span>
+              }
+            </div>
+          </div>
+
+          <!-- Project Details -->
+          <div class="project-content">
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-desc">{{ project.description }}</p>
+
+            <!-- Tags -->
+            <div class="project-tags">
+              @for (tag of project.tags; track tag) {
+                <span class="tag-pill">{{ tag }}</span>
+              }
+            </div>
+
+            <!-- Bottom Action Links -->
+            <div class="project-links">
+              @if (project.liveUrl) {
+                <a [href]="project.liveUrl" target="_blank" rel="noopener noreferrer" class="link-btn live">
+                  <span>Visit Website</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="link-svg">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              }
+              @if (project.githubUrl && !project.liveUrl) {
+                <a [href]="project.githubUrl" target="_blank" rel="noopener noreferrer" class="link-btn github">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="link-svg">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                  <span>Source Code</span>
+                </a>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

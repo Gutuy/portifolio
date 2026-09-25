@@ -1,0 +1,125 @@
+<section id="experience" class="experience-section">
+  <div class="experience-container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <span class="section-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="badge-icon">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+        </svg>
+        Experience
+      </span>
+      <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
+      <p class="section-subtitle">
+        My professional history developing software and contributing to production systems.
+      </p>
+    </div>
+
+    <!-- Timeline Wrapper -->
+    <div class="timeline-wrapper">
+      <div class="timeline-line"></div>
+
+      @for (exp of experiences; track exp.company; let i = $index) {
+        <div class="timeline-item">
+          <!-- Timeline Node Point -->
+          <div class="timeline-node">
+            <div class="node-inner"></div>
+          </div>
+
+          <!-- Timeline Content Card -->
+          <div class="timeline-card glass-card">
+            <div class="card-top">
+              <div class="role-group">
+                <h3 class="role-title">{{ exp.role }}</h3>
+                <div class="company-name">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="company-icon">
+                    <path d="M3 21h18"></path>
+                    <path d="M5 21V7l8-4v18"></path>
+                    <path d="M19 21V11l-6-4"></path>
+                  </svg>
+                  <span>{{ exp.company }}</span>
+                </div>
+              </div>
+
+              <div class="period-badge">
+                <span class="dot"></span>
+                <span>{{ exp.period }}</span>
+              </div>
+            </div>
+
+            <!-- Bullet Descriptions -->
+            <ul class="exp-bullets">
+              @for (item of exp.description; track item) {
+                <li class="bullet-item">
+                  <span class="bullet-arrow">▹</span>
+                  <span>{{ item }}</span>
+                </li>
+              }
+            </ul>
+
+            <!-- Tech Tags -->
+            <div class="exp-tech-row">
+              @for (tech of exp.technologies; track tech) {
+                <span class="tech-tag">{{ tech }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Education & Focus Areas Row -->
+    <div class="credentials-grid">
+      <!-- Education Card -->
+      <div class="credential-box glass-card">
+        <div class="cred-header">
+          <div class="cred-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+          </div>
+          <div>
+            <h4 class="cred-title">Education</h4>
+            <span class="cred-subtitle">Academic Background</span>
+          </div>
+        </div>
+
+        @for (edu of education; track edu.institution) {
+          <div class="cred-body">
+            <h5 class="edu-degree">{{ edu.degree }}</h5>
+            <div class="edu-meta">{{ edu.institution }} • <span class="edu-year">{{ edu.period }}</span></div>
+            <p class="edu-desc">{{ edu.details }}</p>
+          </div>
+        }
+      </div>
+
+      <!-- Core Focus Areas Card -->
+      <div class="credential-box glass-card">
+        <div class="cred-header">
+          <div class="cred-icon-box cert">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <div>
+            <h4 class="cred-title">Core Competencies</h4>
+            <span class="cred-subtitle">Technical Strengths</span>
+          </div>
+        </div>
+
+        <div class="cert-list">
+          @for (item of competencies; track item.name) {
+            <div class="cert-item">
+              <div class="cert-check">✓</div>
+              <div class="cert-info">
+                <span class="cert-name">{{ item.name }}</span>
+                <span class="cert-issuer">{{ item.issuer }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

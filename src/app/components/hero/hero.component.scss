@@ -1,0 +1,222 @@
+.hero-section {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6.5rem 1.5rem 4rem;
+}
+
+.hero-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Status Badge - Two Brand Colors */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.28);
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--brand-secondary);
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.6);
+  }
+
+  .badge-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--brand-secondary);
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Hero Typography */
+.hero-title {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+
+  .highlight-name {
+    color: var(--brand-secondary);
+  }
+}
+
+.typewriter-container {
+  font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  min-height: 2.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  .dynamic-text {
+    color: var(--text-primary);
+    margin-left: 6px;
+    border-bottom: 2px solid var(--brand-primary);
+  }
+
+  .cursor {
+    color: var(--brand-primary);
+    font-weight: 300;
+    margin-left: 2px;
+    animation: blinkCaret 0.8s infinite;
+  }
+}
+
+@keyframes blinkCaret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 680px;
+  margin: 0 auto 2.25rem;
+}
+
+/* Actions */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+
+  .btn-icon {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+/* Socials */
+.hero-socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+
+  .social-label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .social-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .social-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: var(--transition-smooth);
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover {
+      color: #ffffff;
+      background: rgba(37, 99, 235, 0.15);
+      border-color: var(--brand-primary);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/* Professional Overview Grid (Photo-free, human, balanced) */
+.hero-overview-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  text-align: left;
+
+  @media (max-width: 820px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.overview-card {
+  padding: 1.4rem 1.5rem;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  transition: var(--transition-smooth);
+
+  &:hover {
+    border-color: var(--border-glass-hover);
+    transform: translateY(-3px);
+  }
+
+  .overview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.6rem;
+
+    .overview-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .overview-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--brand-secondary);
+      background: rgba(14, 165, 233, 0.1);
+      padding: 2px 8px;
+      border-radius: 100px;
+      border: 1px solid rgba(14, 165, 233, 0.25);
+    }
+  }
+
+  .overview-value {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.35rem;
+  }
+
+  .overview-sub {
+    font-size: 0.825rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+}

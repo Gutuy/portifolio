@@ -1,0 +1,101 @@
+<section id="about" class="about-section">
+  <div class="about-container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <span class="section-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="badge-icon">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        About Me
+      </span>
+      <h2 class="section-title">Background &amp; <span class="gradient-text">Experience</span></h2>
+      <p class="section-subtitle">
+        A summary of my journey as a software developer, core technical skills, and current work.
+      </p>
+    </div>
+
+    <!-- Main 2-Column Content -->
+    <div class="about-grid">
+      <!-- Left Column: Portrait & Visual Card -->
+      <div class="about-visual">
+        <div class="image-card">
+          <div class="image-frame">
+            <img 
+              [src]="profile.avatar" 
+              alt="Gutu Yaekob - Software Developer" 
+              class="profile-img"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Experience Pill -->
+          <div class="floating-stat-card">
+            <div class="stat-number">2+</div>
+            <div class="stat-info">
+              <span class="stat-title">Years</span>
+              <span class="stat-sub">Experience</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Biography & Highlights -->
+      <div class="about-info">
+        <h3 class="info-title">Practical Engineering for Real-World Systems</h3>
+        <p class="info-text">
+          {{ profile.about }}
+        </p>
+
+        <!-- Highlights Grid -->
+        <div class="highlights-grid">
+          @for (item of highlights; track item.title) {
+            <div class="highlight-card">
+              <div class="highlight-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div class="highlight-content">
+                <h4>{{ item.title }}</h4>
+                <p>{{ item.desc }}</p>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Download CV / Actions -->
+        <div class="about-cta-row">
+          <a [href]="profile.resumeUrl" class="btn btn-primary" download="Gutu-Yaekob-CV.pdf" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download CV (PDF)</span>
+          </a>
+
+          <div class="location-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="location-icon">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>{{ profile.location }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Counter Bar -->
+    <div class="stats-row">
+      @for (stat of stats; track stat.label) {
+        <div class="stat-box glass-card">
+          <div class="stat-value gradient-text">{{ stat.value }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+          <div class="stat-subtext">{{ stat.subtext }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
